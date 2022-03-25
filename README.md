@@ -28,6 +28,12 @@ python3 -m venv .venv
 source .venv/bin/activate
 ```
 
+#####Set .env
+edit this file to put your secret_key
+```
+mv .env_sample .env
+```
+
 #####Install required packages
 ```
 pip install -r requirements.txt 
