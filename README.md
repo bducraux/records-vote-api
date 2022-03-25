@@ -37,6 +37,10 @@ pip install -r requirements.txt
 ```
 python manage.py migrate
 ```
+#####Run server
+```
+python manage.py runserver
+```
 
 ####Adding new records
 Open the url:
