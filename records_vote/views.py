@@ -23,10 +23,6 @@ class VoteCounterList(APIView):
         vote = self.request.query_params.get('vote')
         vote_sum = self.request.query_params.get('vote_sum')
 
-        if annotator is not None:
-            queryset = queryset.filter(annotator=annotator)
-        if vote is not None and vote_sum is None:
-            queryset = queryset.filter(vote=vote)
         if vote_sum is not None:
             queryset.filter(vote=vote_sum)
             total = VoteCounter.objects.filter(vote=vote_sum).aggregate(total_sum=Sum('counter'))['total_sum']
@@ -35,6 +31,12 @@ class VoteCounterList(APIView):
 
             return Response({'vote': vote_sum, 'total_sum': total})
 
-        queryset= queryset.order_by('annotator', 'vote')
+        if annotator is not None:
+            queryset = queryset.filter(annotator=annotator)
+
+        if vote is not None:
+            queryset = queryset.filter(vote=vote)
+
+        queryset = queryset.order_by('annotator', 'vote')
 
         return Response([{'annotator': item.annotator, 'vote': item.vote, 'count': item.counter} for item in queryset])
