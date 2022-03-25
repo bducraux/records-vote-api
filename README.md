@@ -73,10 +73,10 @@ some samples insertions are:
 list all vote counters:
 http://127.0.0.1:8000/vote-counter/
 
-get information of one specific annotador:
+get information of one specific annotator:
 http://127.0.0.1:8000/vote-counter/?annotator=annotator2
 
-get information of one specific annotador and vote:
+get information of one specific annotator and vote:
 http://127.0.0.1:8000/vote-counter/?annotator=annotator2&vote=voteB
 
 get information of one specific vote:
